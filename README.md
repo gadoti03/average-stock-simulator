@@ -32,6 +32,7 @@ for calculating the **average duration of stock** of a product in the warehouse.
 ### 2. Formula-based Calculation (`src/strategies/daily_stocks_sales.py`)
 
 * Uses the **formula being tested**: sum of daily stocks divided by total sales.
+* Each product is extracted according to the selected policy (FIFO/LIFO/Random) during sales.
 * Calculates average stock duration using only:
 
   * days with sales
