@@ -2,6 +2,14 @@
 
 This repository contains a **simulator for calculating the average stock** of a product in a warehouse, based solely on purchase and sales orders and their respective quantities.
 
+The main goal is to **test the validity of the formula**:
+
+```
+average stock / average number of sales = sum of daily stocks / total sales
+```
+
+for calculating the **average duration of stock** of a product in the warehouse.
+
 ---
 
 ## Main Features
@@ -12,17 +20,19 @@ This repository contains a **simulator for calculating the average stock** of a 
   * **LIFO** (Last In, First Out)
   * **Random**
 
-* Compares two methods for calculating average stock:
+* Compares two methods for calculating average stock duration:
 
 ### 1. Manual Calculation (`src/strategies/manual_duration.py`)
 
+* Implements the **correct calculation** manually.
 * Each product is extracted according to the selected policy (FIFO/LIFO/Random) during sales.
-* The **duration of each item in stock** is calculated.
-* The average stock is obtained by summing all durations and dividing by the **total number of sold items**.
+* The **duration of each item in stock** is calculated individually.
+* The average duration is obtained by summing all durations and dividing by the **total number of sold items**.
 
-### 2. Daily Stock Ratio Calculation (`src/strategies/daily_stocks_sales.py`)
+### 2. Formula-based Calculation (`src/strategies/daily_stocks_sales.py`)
 
-* Calculates average stock using the ratio between **average stock** and **average duration**, considering only:
+* Uses the **formula being tested**: sum of daily stocks divided by total sales.
+* Calculates average stock duration using only:
 
   * days with sales
   * or days when stock is greater than zero
@@ -53,15 +63,42 @@ src/
 
 ---
 
-## How to Use the Simulator
+## How to Run the Simulator
 
-1. Install dependencies (if any).
-2. Run the main script (e.g., `main.py`) specifying the desired policy and input data.
-3. Compare results between **manual calculation** and **daily ratio calculation**.
+Run the `main.py` script with the CLI arguments:
+
+```bash
+python main.py --policy fifo --days 10 --seed 42
+```
+
+CLI arguments:
+
+```python
+# Parser CLI (Command Line Interface)
+parser = argparse.ArgumentParser(description="Average Stock Simulator")
+parser.add_argument(
+    "--policy",
+    type=str,
+    required=True,
+    help="Policy to use: fifo | filo | random"
+)
+parser.add_argument(
+    "--days",
+    type=int,
+    default=10,
+    help="Number of simulation days"
+)
+parser.add_argument(
+    "--seed",
+    type=int,
+    default=42,
+    help="Random seed for reproducibility"
+)
+```
 
 ---
 
 ## Notes
 
 * `simulation_result.py` is used to **store simulation results**.
-* The implemented strategies allow evaluating how the warehouse policy affects the calculation of average stock.
+* The simulator allows comparing the **manual correct calculation** versus the **formula-based approach** for evaluating average stock duration.

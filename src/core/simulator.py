@@ -1,4 +1,4 @@
-from src.simulation_result import SimulationResult
+from src.results.simulation_result import SimulationResult
 
 class Simulator:
     def __init__(self, warehouse, policy):

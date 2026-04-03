@@ -1,7 +1,7 @@
 import argparse
 
-from src.warehouse import Warehouse
-from src.simulator import Simulator
+from src.core.warehouse import Warehouse
+from src.core.simulator import Simulator
 from src.policies.fifo import FIFOPolicy
 from src.policies.filo import FILOPolicy
 from src.policies.random_policy import RandomPolicy

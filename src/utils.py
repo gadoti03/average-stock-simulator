@@ -1,5 +1,5 @@
 import random
-from src.stock_item import StockItem
+from src.core.stock_item import StockItem
 
 class EventGenerator:
     def __init__(self, max_daily_entries=5, max_daily_exits=5, seed=None):
