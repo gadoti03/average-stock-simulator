@@ -6,7 +6,7 @@ from src.policies.fifo import FIFOPolicy
 from src.policies.filo import FILOPolicy
 from src.policies.random_policy import RandomPolicy
 from src.utils import EventGenerator
-from src.strategies.daily_stocks_sales import DailyStockStrategy
+from src.strategies.daily_stocks_exits import DailyStockStrategy
 from src.strategies.manual_duration import ManualDurationStrategy
 
 
