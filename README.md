@@ -32,7 +32,6 @@ for calculating the **average duration of stock** of a product in the warehouse.
 ### 2. Formula-based Calculation (`src/strategies/daily_stocks_sales.py`)
 
 * Uses the **formula being tested**: sum of daily stocks divided by total sales.
-* Each product is extracted according to the selected policy (FIFO/LIFO/Random) during sales.
 * Calculates average stock duration using only:
 
   * days with sales
@@ -66,36 +65,25 @@ src/
 
 ## How to Run the Simulator
 
-Run the `main.py` script with the CLI arguments:
+To run the simulator, execute the `main.py` script and specify the following parameters:
 
-```bash
+* **Policy** `<--policy>`: Choose the stock extraction method:
+
+  * `fifo`  → First In, First Out
+  * `filo`  → Last In, First Out
+  * `random` → Random selection of items
+
+* **Number of simulation days** `<--days>`: Define how many days the simulation should run. Only affects the length of the simulated timeline.
+
+* **Random seed** `<--seed>`: Optional parameter to ensure reproducibility when using the random policy. Same seed produces the same results across runs.
+
+Example usage:
+
+```
 python main.py --policy fifo --days 10 --seed 42
 ```
 
-CLI arguments:
-
-```python
-# Parser CLI (Command Line Interface)
-parser = argparse.ArgumentParser(description="Average Stock Simulator")
-parser.add_argument(
-    "--policy",
-    type=str,
-    required=True,
-    help="Policy to use: fifo | filo | random"
-)
-parser.add_argument(
-    "--days",
-    type=int,
-    default=10,
-    help="Number of simulation days"
-)
-parser.add_argument(
-    "--seed",
-    type=int,
-    default=42,
-    help="Random seed for reproducibility"
-)
-```
+This will run the simulator using the FIFO policy for 10 days with a fixed random seed for reproducibility.
 
 ---
 
