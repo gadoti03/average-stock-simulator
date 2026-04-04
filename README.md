@@ -1,6 +1,6 @@
-# Average Stock Simulator
+# Average Stock Time Simulator
 
-This repository contains a **simulator for calculating the average stock** of a product in a warehouse, based solely on purchase and sales orders and their respective quantities.
+This repository contains a **simulator for calculating the average stock time** of a product in a warehouse, based solely on purchase and sales orders and their respective quantities.
 
 The main goal is to **test the validity of the formula**:
 
